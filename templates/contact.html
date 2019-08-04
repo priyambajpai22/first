@@ -1,0 +1,172 @@
+{% load static %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <div id="pageloader">
+   <img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" alt="processing..." />
+</div>
+<title>Art School | Contacts</title>
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/reset.css'%}">
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style.css'%}">
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/grid_12.css'%}">
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/slider.css'%}">
+<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700' rel='stylesheet' type='text/css'>
+<script src="{% static 'js/jquery-1.7.min.js'%}"></script>
+<script src="{% static 'js/jquery.easing.1.3.js'%}"></script>
+<script src="{% static 'js/tms-0.4.1.js'%}"></script>
+<script>
+$(document)
+    .ready(function () {
+    $('.slider')
+        ._TMS({
+        show: 0,
+        pauseOnHover: true,
+        prevBu: '.prev',
+        nextBu: '.next',
+        playBu: false,
+        duration: 800,
+        preset: 'fade',
+        pagination: true,
+        pagNums: false,
+        slideshow: 7000,
+        numStatus: false,
+        banners: false,
+        waitBannerAnimation: false,
+        progressBar: false
+    })
+});
+
+$(document).ready(function(){
+  $('#submit123').click(function(event){
+     event.preventDefault();
+    $.ajax({
+      url:"{% url 'contact' %}",
+      type:'POST',
+      data:{'formdata':$('#form').serializeArray(),'csrfmiddlewaretoken': '{{ csrf_token }}',}, 
+      success: function(data){
+        $("#pageloader").fadeIn();
+        setTimeout(function() {
+          $('#pageloader').fadeOut("fast");
+        }, 800 );
+
+      }
+      
+    });
+  });
+});
+
+</script>
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+<![endif]-->
+<style type="text/css">
+  #pageloader
+{
+  background: rgba( 255, 255, 255, 0.8 );
+  display: none;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+
+#pageloader img
+{
+  left: 50%;
+  margin-left: -32px;
+  margin-top: -32px;
+  position: absolute;
+  top: 50%;
+}
+</style>
+</head>
+<body>
+   {% if messages %}
+  <div class="alert alert-success">
+    {% for message in messages %}
+  <strong>Success!</strong>{{message}}
+  {% endfor %}.
+</div>
+{% endif %}
+<div class="main">
+  <!--==============================header=================================-->
+  <header>
+    <h1><a href="{% url 'index' %}" ><img src="{% static 'images/logo.png'%}" alt=""></a></h1>
+    <nav>
+      <div id="slide">
+        <div class="slider">
+          <ul class="items">
+            <li><img src="{% static 'slider-1.jpg'%}" alt=""></li>
+            <li><img src="{% static 'slider-1.jpg'%}" alt=""></li>
+            <li><img src="{% static 'slider-1.jpg'%}" alt=""></li>
+            <li><img src="{% static 'slider-2.jpg'%}" alt=""></li>
+            <li><img src="{% static 'slider-3.jpg'%}" alt=""></li>
+          </ul>
+        </div>
+        <a href="#" class="prev"></a><a href="#" class="next"></a> </div>
+      <ul class="menu">
+        <li><a href="{% url 'index' %}" class="clr-1">Home</a></li>
+        <li></li>
+        <li><a href="{% url 'contact' %}" class="clr-2">Contact</a></li>
+        <li></li>
+        <li class="current"><a href="{% url 'golu' %}" class="clr-5">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!--==============================content================================-->
+  <section id="content">
+    <div class="container_12">
+      <div class="grid_4 bot-1">
+        <h2 class="top-6">Contact Us</h2>
+        <div class="map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.9672810404227!2d79.48684301438615!3d24.624812560727424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3982875af49bc315%3A0x1de7309f71e93834!2sshri+kanha+kids+play+school!5e0!3m2!1sen!2sin!4v1564915536740!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <dl>
+          <dt>Ratan-gunj, <br>
+            Bijawar.</dt>
+          <dd><span>Siddarth kathal (Founder): </span>+8654894255</dd>
+          <dd><span>E-mail: </span><a href="#" class="link">Siddarthkathal@gmail.com</a></dd>
+        </dl>
+      </div>
+      <div class="grid_8">
+        <div class="block-1 top-5">
+          <div class="block-1-shadow">
+            <h2 class="clr-6">Contact Form</h2>
+            <form id="form" method="post">
+              
+              <fieldset>
+                <label><strong>Name:</strong>
+                  {{form.name}}
+                  <strong class="clear"></strong></label>
+                <label><strong>Email:</strong>
+                  {{ form.email }}
+                  <strong class="clear"></strong></label>
+                <label><strong>Phone:</strong>
+                  {{ form.mobile }}
+                  <strong class="clear"></strong></label>
+                <label><strong>Enquiry:</strong>
+                  {{form.message}}
+                  <strong class="clear"></strong></label>
+                <strong class="clear"></strong>
+                <div class="btns pad-2"><button  id='clear' class="link-2">Clear</button><button id="submit123" type="submit" class="link-2">Send</button></div>
+              </fieldset>
+            </form>
+
+          </div>
+        </div>
+        
+        <!--==============================footer=================================-->
+        <footer>
+          <p>© 2012 Kanha Kidspaly School</p>
+          <p>Design and Developed By  <a target="_blank" href="https://www.facebook.com/priyam.bajpai.773" class="link"> PRIYAM BAJPAI</a></p>
+        </footer>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

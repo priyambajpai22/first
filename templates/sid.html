@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'golu.css' %}">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<form method="post" enctype="multipart/form-data" id='idform' class='form'>
+
+ 
+    {% csrf_token %}
+    {{ form.name.label }}
+      {% render_field form.name autocomplete="off" class+="form-control" %}
+      {{ form.surname.label }}
+        {% render_field form.surname  class+="form-control" %}
+        {{ form.father.label }}
+    {% render_field form.father  class+="form-control" %}
+    {{ form.mobile.label }}
+    {% render_field form.mobile  class+="form-control" %}
+    {{ form.clas.label }}
+        {% render_field form.clas  class+="form-control" %}
+        {{ form.rollno.label }}
+        {% render_field form.rollno  class+="control" %}
+        <br>
+        {{ form.fee.label }}
+        {% render_field form.fee  class+="form-control" %}
+        {{ form.gander.label }}
+    {% render_field form.gander  class+="form-group" %}
+     <button type="submit" id='golu' class="btn-primary">Sign in</button>
+  </form>
+{% endblock %}
+  
+

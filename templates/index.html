@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<title>Shri kanha school (Kids)</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" media="screen"href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style.css'%}">
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/grid_12.css'%}">
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'js/slider.css'%}">
+<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700' rel='stylesheet' type='text/css'>
+<script src="{% static 'js/jquery-1.7.min.js'%}"></script>
+<script src="{% static 'js/jquery.easing.1.3.js'%}"></script>
+<script src="{% static 'js/tms-0.4.1.js'%}"></script>
+ 
+<script>
+$(document)
+    .ready(function () {
+    $('.slider')
+        ._TMS({
+        show: 0,
+        pauseOnHover: true,
+        prevBu: '.prev',
+        nextBu: '.next',
+        playBu: false,
+        duration: 800,
+        preset: 'fade',
+        pagination: true,
+        pagNums: false,
+        slideshow: 7000,
+        numStatus: false,
+        banners: false,
+        waitBannerAnimation: false,
+        progressBar: false
+    })
+});
+</script>
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+<![endif]-->
+
+</head>
+<body>
+<div class="main">
+  <!--==============================header=================================-->
+  <header>
+    <h1><a href="{% url 'index' %}"><img src="{% static 'image/logo.png'%}" alt=""></a></h1>
+    <nav>
+      <div id="slide">
+        <div class="slider">
+          <ul class="items">
+            <li><img src="{% static 'slider-1.jpg'%}" ></li>
+            <li><img src="{% static 'slider-2.jpg'%}" ></li>
+            <li><img src="{% static 'slider-3.jpg'%}" ></li>
+          </ul>
+        </div>
+        <a href="#" class="prev"></a><a href="#" class="next"></a> </div>
+      <ul class="menu">
+        <li class="current"><a href="{% url 'index' %}" class="clr-1">Home</a></li>
+        <li></li>
+        <li><a href="{% url 'golu' %}" class="clr-2">Admin</a></li>
+        <li></li>
+        <li><a href="{% url 'contact' %}" class="clr-5">Contacts</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!--==============================content================================-->
+
+  <section id="content">
+    <div class="container_12">
+      <div class="grid_4 bot-1">
+        <div class="art"></div>
+        <h2 class="top-1 p2">Events</h2>
+        <p class="text-1 p3">Siddharth kathal(Founder)- “An investment in knowledge pays the best interest.</p>
+        <p> <br>
+          </p>
+        <p class="text-1 top-2 p3">Abhishek kathal (Principal)-- “Smile!”</p>
+        <p>Education is the passport to the future, for tomorrow belongs to those who prepare for it today.<br>
+          .</p>
+        <a href="#" class="link-1 top-3">News Archive</a> </div>
+      <div class="grid_8">
+        <div class="pad-1">
+          <h2 class="p2">Welcome to Kanha Kids School </h2>
+          
+          
+          <p class="text-1">{{x.where}}</p>
+        </div>
+        <div class="block-1">
+          <div class="block-1-shadow">
+            <h2 class="clr-6 p4">Our Gallery</h2>
+            <div class="box-1"> <a  class="img-border"><img src="{% static 'images/img1.jpg'%} "></a>
+              <p class="text-2"></p>
+            </div>
+
+            <div class="box-1 last"> <a class="img-border"><img src="{% static 'images/img2.jpg'%}"></a>
+              <p class="text-2"></p>
+            </div>
+            <div class="clear p5"></div>
+            <div class="box-1"> <a  class="img-border"><img src="{% static 'images/img3.jpg'%}"></a>
+              <p class="text-2"></p>
+            </div>
+            <div class="box-1 last"> <a  class="img-border"><img src="{% static 'images/img4.jpg'%}"></a>
+              <p class="text-2"></p>
+            </div>
+            <div class="clear"></div>
+            <div class="pad-2"> <a  class="link-2">Full Gallery</a> </div>
+          </div>
+        </div>
+        <!--
+        ==============================footer=================================-->
+        <footer>
+          <p>© 2019 Kanha kids paly school</p>
+          <p> developed by  <a target="_blank" href="https://www.facebook.com/priyam.bajpai.773" class="link">Priyam Bajpai</a></p>
+        </footer>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

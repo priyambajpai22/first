@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load widget_tweaks %}
+
+
+{% block head %}
+
+ <link rel="stylesheet" type="text/css" href="{% static 'golu.css' %}">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+ </script>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+{% endblock %}
+{% block content %}
+<form method="post" enctype="multipart/form-data" class='contentform'>
+  {% csrf_token %}
+  <h3>Fill data for Index Page</h3>
+  {{form.where.label}}
+  {% render_field form.where class+='form-control' %}
+  {{form.text.label}}
+  {% render_field form.text class+='form-control' %}
+  {{form.date1.label}}
+  {% render_field form.date1 class+='form-control' %}
+  {{form.text1.label}}
+  {% render_field form.text1 class+='form-control' %}
+  {{form.date2.label}}
+  {% render_field form.date2 class+='form-control' %}
+  {{form.photo.label}}
+  {% render_field form.photo class+='image'  %}
+  {{form.photo1.label}}
+  {% render_field form.photo1 class+='image'  %}
+  {{form.photo2.label}}
+  {% render_field form.photo2 class+='image' %}
+  {{form.photo3.label}}
+  {% render_field form.photo3 class+='image' %}
+
+
+
+  <input type='submit' class='btn-primary'></input>
+</form>
+</div>
+<div class='dropdown-header' id='option' type='button'>
+   <select class='selecter1' id='selecter' name="cars" selected='None'>
+  <option value="None">Choose here</option>
+  <option value="index">Index</option>
+  <option value="saab">Contact</option>
+  <option value="fiat">About us</option>
+  <option value="audi">Gallary</option>
+</select> 
+</div>
+
+{% endblock %}
+
+
